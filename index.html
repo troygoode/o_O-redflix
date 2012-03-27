@@ -15,9 +15,9 @@
     </ul>
 
     <!-- Content -->
-    <div id="movies">
-      <p bind="text: currentSection().title"></p>
-      <ul bind="foreach: currentSection().movies">
+    <div id="movies" bind="with: currentSection()">
+      <p bind="text: title"></p>
+      <ul bind="foreach: movies">
         <li><img bind="src: img" /></li>
       </ul>
     </div>
