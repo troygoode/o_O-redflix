@@ -1,18 +1,18 @@
 !function(){
 
   var ViewModel = function(){
-    this.navigationSections = o_O.Collection();
-    this.currentSection = o_O.property();
+    this.navigationSections = o_O.collection();
+    this.currentSection = o_O();
   };
 
   var NavSection = function(section){
     var self = this;
 
-    self.state = o_O.property(section.state);
-    self.title = o_O.property(section.title);
-    self.movies = o_O.property(section.movies);
+    self.state = o_O(section.state);
+    self.title = o_O(section.title);
+    self.movies = o_O(section.movies);
 
-    self.classes = o_O.property(function(){
+    self.classes = o_O(function(){
       if(window.viewmodel.currentSection())
         return window.viewmodel.currentSection().state === self.state()
           ? 'active'
