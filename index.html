@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>RedFlix</title>
+    <link href="redflix.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- Sidebar -->
+    <ul id="navigation" bind="foreach: navigationSections">
+      <li bind="class: classes(); text: title(); click: click"></li>
+    </ul>
+
+    <!-- Content -->
+    <div id="movies">
+      <p bind="text: title()"></p>
+      <ul bind="foreach: movies">
+        <li><img bind="src: img()" /></li>
+      </ul>
+    </div>
+
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/o_O.js"></script>
+    <script src="lib/stativus.js"></script>
+    <script src="redflix-data.js"></script>
+    <script src="redflix-navigation.js"></script>
+    <script src="redflix-statechart.js"></script>
+    <script src="redflix-bindings.js"></script>
+  </body>
+</html>
