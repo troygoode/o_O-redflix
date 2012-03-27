@@ -35,7 +35,7 @@
   statechart.addState('suggestions', {
     parentState: 'base',
     enterState: function(){
-      window.viewmodel.currentSection = window.sections.suggestions;
+      window.viewmodel.currentSection(window.sections.suggestions);
       window.viewmodel.refresh();
     },
     key_down: function(){
@@ -46,7 +46,7 @@
   statechart.addState('recently_watched', {
     parentState: 'base',
     enterState: function(){
-      window.viewmodel.currentSection = window.sections.recently_watched;
+      window.viewmodel.currentSection(window.sections.recently_watched);
       window.viewmodel.refresh();
     },
     key_up: function(){
@@ -60,7 +60,7 @@
   statechart.addState('new_releases', {
     parentState: 'base',
     enterState: function(){
-      window.viewmodel.currentSection = window.sections.new_releases;
+      window.viewmodel.currentSection(window.sections.new_releases);
       window.viewmodel.refresh();
     },
     key_up: function(){
@@ -74,7 +74,7 @@
   statechart.addState('instant_queue', {
     parentState: 'base',
     enterState: function(){
-      window.viewmodel.currentSection = window.sections.instant_queue;
+      window.viewmodel.currentSection(window.sections.instant_queue);
       window.viewmodel.refresh();
     },
     key_up: function(){
