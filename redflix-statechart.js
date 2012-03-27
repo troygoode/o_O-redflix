@@ -1,4 +1,5 @@
 !function(){
+
   var statechart = window.statechart = Stativus.createStatechart();
 
   statechart.addState('base', {

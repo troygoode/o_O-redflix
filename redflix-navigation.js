@@ -1,6 +1,6 @@
 !function(){
 
-  var sections = window.sections = {
+  window.sections = {
     suggestions: {
       state: 'suggestions',
       title: 'Suggestions',
