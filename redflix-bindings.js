@@ -3,14 +3,12 @@
   var ViewModel = function(){
     var self = this;
 
-    self.title = o_O.property();
     self.movies = o_O.Collection();
     self.navigationSections = o_O.Collection();
     self.currentSection = o_O.property();
 
-    self.refresh = function(){
-      self.title(self.currentSection.title);
-
+    //whenever currentSection() is updated, copy its movies over into the .movies() collection
+    self.currentSection.on('set', function(){
       // clear out any movies currently being shown
       self.movies.forEach(function(movie){
         self.movies.remove(movie);
@@ -21,7 +19,7 @@
         var Movie = o_O.Model(movie);
         self.movies.add(new Movie());
       });
-    };
+    });
   };
 
   var NavSection = function(section){

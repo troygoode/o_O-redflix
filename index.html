@@ -16,7 +16,7 @@
 
     <!-- Content -->
     <div id="movies">
-      <p bind="text: title()"></p>
+      <p bind="text: currentSection().title"></p>
       <ul bind="foreach: movies">
         <li><img bind="src: img()" /></li>
       </ul>
