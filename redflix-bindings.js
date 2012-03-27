@@ -24,41 +24,36 @@
     };
   };
 
-  var Section = o_O.Model({
-    state: '',
-    title: ''
-  },{
-    initialize: function(){
-      var self = this;
+  var NavSection = function(section){
+    var self = this;
 
-      this.click = function(){
-        window.statechart.sendEvent('goto_' + this.state());
-      };
+    self.state = o_O.property(section.state);
+    self.title = o_O.property(section.title);
+    self.movies = section.movies;
 
-      this.classes = o_O.property(function(){
-        if(viewmodel.currentSection())
-          return viewmodel.currentSection().state === self.state()
-            ? 'active'
-            : null;
-        else
-          return null;
-      });
-    }
-  });
+    self.classes = o_O.property(function(){
+      if(window.viewmodel.currentSection())
+        return window.viewmodel.currentSection().state === self.state()
+          ? 'active'
+          : null;
+      else
+        return null;
+    });
 
-  function makeSection(section){
-    var s = new Section(section);
-    s.movies = section.movies;
-    return s;
-  }
+    self.click = function(){
+      window.statechart.sendEvent('goto_' + self.state());
+    };
+  };
 
   var viewmodel = window.viewmodel = new ViewModel();
-  viewmodel.navigationSections.add(makeSection(window.sections.suggestions));
-  viewmodel.navigationSections.add(makeSection(window.sections.recently_watched));
-  viewmodel.navigationSections.add(makeSection(window.sections.new_releases));
-  viewmodel.navigationSections.add(makeSection(window.sections.instant_queue));
 
-  //set default navigation section (that is selected when app is first loaded)
+  // add navigation sections to viewmodel
+  viewmodel.navigationSections.add(new NavSection(window.sections.suggestions));
+  viewmodel.navigationSections.add(new NavSection(window.sections.recently_watched));
+  viewmodel.navigationSections.add(new NavSection(window.sections.new_releases));
+  viewmodel.navigationSections.add(new NavSection(window.sections.instant_queue));
+
+  // set default navigation section (that is selected when app is first loaded)
   viewmodel.currentSection(window.sections.suggestions);
 
 }();
