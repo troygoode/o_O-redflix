@@ -25,14 +25,17 @@ body{
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   cursor: pointer;
+  margin-left: 10px;
 }
 #navigation > li:hover{
   background-color: #c1c1c1;
+  margin-left: 0;
 }
 #navigation > li.active, #navigation > li.active:hover{
   background-color: #3b3530;
   color: #b1b1b1;
   cursor: default;
+  margin-left: 0;
 }
 
 #movies{

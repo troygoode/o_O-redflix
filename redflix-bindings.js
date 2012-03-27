@@ -7,25 +7,20 @@
       this.movies = o_O.Collection();
       this.navigationSections = o_O.Collection();
 
-      // swaps a list of movies out for another list of movies
-      this.load = function(movies){
-        self = this;
+      this.refresh = function(){
+        var self = this;
+        this.title(this.currentSection.title);
 
         // clear out any movies currently being shown
-        self.movies.forEach(function(movie){
+        this.movies.forEach(function(movie){
           self.movies.remove(movie);
         });
 
         // add each movie to the collection
-        movies.forEach(function(movie){
+        this.currentSection.movies.forEach(function(movie){
           var Movie = o_O.Model(movie);
           self.movies.add(new Movie());
         });
-      };
-
-      this.refresh = function(){
-        this.title(this.currentSection.title);
-        this.load(this.currentSection.movies);
 
         //HACK: couldn't get the bindings to fire on the navigation sections without touching a property on each section
         this.navigationSections.forEach(function(section){
@@ -67,5 +62,6 @@
 
 }();
 
+// kickstart the statechart
 window.statechart.initStates('base');
 window.statechart.sendEvent('goto_' + window.viewmodel.currentSection.state);
